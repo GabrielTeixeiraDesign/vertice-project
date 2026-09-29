@@ -53,9 +53,15 @@
     destination=url.href;overlay=document.createElement('div');overlay.className='page-transition';overlay.setAttribute('role','status');overlay.setAttribute('aria-live','polite');
     overlay.innerHTML='<div class="transition-track" aria-hidden="true"><svg class="transition-car" viewBox="0 0 160 70" xmlns="http://www.w3.org/2000/svg"><g fill="#d5ff3f"><path d="M24 43 50 34 66 22h32l18 19 29 5v9H20z"/><path d="M14 24h32v5H14zM136 41h17v5h-17z"/></g><path d="M72 26h20l10 12H62z" fill="#10120f"/><g fill="#10120f" stroke="#f3f4ec" stroke-width="3"><circle cx="43" cy="53" r="12"/><circle cx="122" cy="53" r="12"/></g><path d="M0 38h22M3 47h12" stroke="#9ca394" stroke-width="2"/></svg></div><p class="transition-label">ON TO THE NEXT PAGE</p>';
     document.body.append(overlay);
-    let committed=false;const navigate=()=>{if(committed||!destination)return;committed=true;location.assign(destination);};
+    const started=performance.now();
+    let committed=false;const navigate=()=>{
+      if(committed||!destination)return;
+      const remaining=3000-(performance.now()-started);
+      if(remaining>0){clearTimeout(timer);timer=setTimeout(navigate,remaining);return;}
+      committed=true;clearTimeout(timer);location.assign(destination);
+    };
     overlay.querySelector('.transition-car').addEventListener('animationend',navigate,{once:true});
-    timer=setTimeout(navigate,950);
+    timer=setTimeout(navigate,3250);
   });
 })();
 
