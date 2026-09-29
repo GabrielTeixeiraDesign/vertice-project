@@ -19,7 +19,7 @@ The original route names are retained so existing links continue to work. Driver
 
 - Responsive layouts and a mobile navigation menu.
 - Smooth wheel scrolling, section reveals, subtle image parallax and animated performance bars.
-- A reading progress indicator and a three-second animated car transition between pages with English status text.
+- A reading progress indicator and a 1.5-second animated logo and car transition between pages with English status text.
 - Local images and self-hosted Barlow and Barlow Condensed fonts.
 - Semantic HTML, descriptive image alternatives, a skip link and active-page navigation labels.
 - Support for the system's `prefers-reduced-motion` setting. There is no separate animation pause control.
